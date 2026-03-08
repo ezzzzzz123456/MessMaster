@@ -24,7 +24,7 @@ api.interceptors.response.use(
     async(error) => {
         const originalRequest = error.config;
 
-        if (error.response ? .status === 401 && !originalRequest._retry) {
+        if (error.response && error.response.status === 401 && !originalRequest._retry) { {
             originalRequest._retry = true;
             try {
                 // Assume backend relies on httpOnly cookie for the refresh token
@@ -43,8 +43,8 @@ api.interceptors.response.use(
                 return Promise.reject(refreshError);
             }
         }
-        return Promise.reject(error);
-    }
-);
+        return Promise.reject(error);   
+    }           
+    });
 
 export default api;

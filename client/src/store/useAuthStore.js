@@ -9,7 +9,7 @@ const useAuthStore = create((set) => ({
     setAuth: (user, accessToken) => set({
         user,
         accessToken,
-        role: user ? .role || null
+        role: user ? user.role : null
     }),
 
     setAccessToken: (token) => set({ accessToken: token }),

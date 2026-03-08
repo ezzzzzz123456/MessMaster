@@ -5,6 +5,10 @@ import useAuthStore from '../store/useAuthStore';
 import Landing from '../pages/Landing';
 import StaffLogin from '../pages/StaffLogin';
 import StudentLogin from '../pages/StudentLogin';
+import StudentPortal from '../pages/student/StudentPortal';
+
+import DashboardLayout from '../pages/dashboard/DashboardLayout';
+
 // ... Dashboard and Student imports will go here
 
 const ProtectedRoute = ({ children, allowedRole }) => {
@@ -32,18 +36,16 @@ const AppRouter = () => {
             <div>Setup Wizard Placeholder</div>
           </ProtectedRoute>
         } />
-        
+
         <Route path="/dashboard/*" element={
           <ProtectedRoute allowedRole="staff">
-            <div>Dashboard Wrapper Placeholder</div>
+            <DashboardLayout />
           </ProtectedRoute>
         } />
 
         {/* Student Routes */}
         <Route path="/student/feedback" element={
-          <ProtectedRoute allowedRole="student">
-            <div>Student Portal Placeholder</div>
-          </ProtectedRoute>
+          <StudentPortal />
         } />
 
         {/* Fallback */}
